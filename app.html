@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+<body>
+    <div class="mx-auto my-5 max-w-7xl">
+
+        <div x-show="showFilters" class="overflow-hidden bg-white border rounded-lg shadow">
+
+            <div>
+                <div class="grid gap-4 px-4 py-3 border-b grid-cols-16">
+                    <div class="flex items-center col-span-1 text-lg font-medium text-gray-700" x-text="i + 1">1</div>
+                    <div class="col-span-2 ">
+                        <select x-show="i > 0" x-model="filters[i].connector"
+                            class="block w-full py-2 pl-3 pr-10 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
+                            style="display: none;">
+                            <option> </option>
+                            <option>AND</option>
+                            <option>OR</option>
+                        </select>
+                    </div>
+                    <div class="col-span-4">
+                        <select x-model="filters[i].column" x-show="filters[i].connector.length > 0 || i == 0"
+                            class="block w-full py-2 pl-3 pr-10 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                            <option> </option>
+
+                            <option>1</option>
+
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="col-span-4">
+                        <select
+                            class="block w-full py-2 pl-3 pr-10 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                            <option> </option>
+                            <option value="eq">Is</option>
+                        </select>
+                    </div>
+                    <div class="col-span-4">
+                        <div class="relative rounded-md shadow-sm">
+                            <label>
+                                <input class="block w-full form-input sm:text-sm sm:leading-5"
+                                    placeholder="Insert your value here">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-span-1">
+                        <button type="button" x-on:click="filters = filters.filter(g => g.id != f.id)"
+                            class="flex items-center justify-center flex-grow w-full h-full py-2 text-gray-500 transition duration-150 ease-in-out hover:text-gray-800"><svg
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 x">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</body>
+
+</html>
